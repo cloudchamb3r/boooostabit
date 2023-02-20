@@ -13,31 +13,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         wv = findViewById<BackgroundWebView>(R.id.boostabit_view)
-        wv.let { wv ->
-            wv.apply {
-                settings.apply  {
-                    useWideViewPort = true
-                    javaScriptEnabled = true
-                    domStorageEnabled = true
-                    loadWithOverviewMode = true
-                    builtInZoomControls = false
-                    javaScriptCanOpenWindowsAutomatically = false
-                    setSupportZoom(false)
-                    setSupportMultipleWindows(false)
-                    cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
-                }
-                webViewClient = object : WebViewClient() {
-                    override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                        view.loadUrl(url)
-                        return true
-                    }
-                }
-            }.run {
-                loadUrl("https://bustabit.com")
-            }
-        }
+        wv.loadUrl("https://bustabit.com")
     }
 
     override fun onBackPressed() {
